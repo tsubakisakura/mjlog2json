@@ -1,0 +1,16 @@
+[package]
+name = "mjlog2json-checker"
+version = "0.1.0"
+edition = "2021"
+description = "Verify that mjlog2json conversion matches the official xml and json"
+license = "Apache-2.0 OR MIT"
+
+[dependencies]
+mjlog = { path = "../mjlog" }
+tenhou-json = { path = "../tenhou-json" }
+mjlog2json-core = { path = "../mjlog2json-core" }
+glob = "0.3.2"
+thiserror = "2.0.12"
+async-std = { version = "1.13.0", features = ["attributes"] }
+futures = "0.3.31"
+serde_json = "1.0.140"

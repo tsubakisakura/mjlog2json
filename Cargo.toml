@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+    "mjlog",
+    "tenhou-json",
+    "mjlog2json",
+    "mjlog2json-core",
+    "mjlog2json-checker"]
+
+[workspace.metadata.docs.rs]
+rustdoc-args = ["--no-deps"]

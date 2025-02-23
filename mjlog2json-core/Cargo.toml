@@ -1,0 +1,9 @@
+[package]
+name = "mjlog2json-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mjlog = { path = "../mjlog" }
+tenhou-json = { path = "../tenhou-json" }
+thiserror = "2.0.12"
