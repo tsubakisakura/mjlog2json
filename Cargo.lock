@@ -461,7 +461,7 @@ checksum = "78ca9ab1a0babb1e7d5695e3530886289c18cf2f87ec19a575a0abdce112e3a3"
 
 [[package]]
 name = "mjlog"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "num-derive",
  "num-traits",
@@ -472,7 +472,7 @@ dependencies = [
 
 [[package]]
 name = "mjlog2json"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "argh",
  "async-std",
@@ -487,7 +487,7 @@ dependencies = [
 
 [[package]]
 name = "mjlog2json-checker"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "async-std",
  "futures",
@@ -501,7 +501,7 @@ dependencies = [
 
 [[package]]
 name = "mjlog2json-core"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "mjlog",
  "tenhou-json",
@@ -708,7 +708,7 @@ dependencies = [
 
 [[package]]
 name = "tenhou-json"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "num-derive",
  "num-traits",
