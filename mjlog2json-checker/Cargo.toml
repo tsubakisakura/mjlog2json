@@ -1,15 +1,16 @@
 [package]
 name = "mjlog2json-checker"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Verify that mjlog2json conversion matches the official xml and json"
-repository = "https://github.com/tsubakisakura/mjlog2json/mjlog2json-checker"
+repository = "https://github.com/tsubakisakura/mjlog2json/"
+documentation = "https://docs.rs/mjlog2json-checker"
 license = "Apache-2.0 OR MIT"
 
 [dependencies]
-mjlog = { version = "0.1.0", path = "../mjlog" }
-tenhou-json = { version = "0.1.0", path = "../tenhou-json" }
-mjlog2json-core = { version = "0.1.0", path = "../mjlog2json-core" }
+mjlog = { version = "0.1.1", path = "../mjlog" }
+tenhou-json = { version = "0.1.1", path = "../tenhou-json" }
+mjlog2json-core = { version = "0.1.1", path = "../mjlog2json-core" }
 glob = "0.3.2"
 thiserror = "2.0.12"
 async-std = { version = "1.13.0", features = ["attributes"] }

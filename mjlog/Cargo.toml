@@ -1,9 +1,10 @@
 [package]
 name = "mjlog"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "mjlog XML parser"
-repository = "https://github.com/tsubakisakura/mjlog2json/mjlog"
+repository = "https://github.com/tsubakisakura/mjlog2json/"
+documentation = "https://docs.rs/mjlog"
 license = "Apache-2.0 OR MIT"
 
 [dependencies]
