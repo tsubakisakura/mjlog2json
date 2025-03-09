@@ -2,6 +2,9 @@
 name = "mjlog2json-core"
 version = "0.1.0"
 edition = "2021"
+description = "Convert mjlog-XML to tenhou-JSON (core lib)"
+repository = "https://github.com/tsubakisakura/mjlog2json/mjlog2json-core/"
+license = "Apache-2.0 OR MIT"
 
 [dependencies]
 mjlog = { path = "../mjlog" }

@@ -3,6 +3,7 @@ name = "mjlog"
 version = "0.1.0"
 edition = "2021"
 description = "mjlog XML parser"
+repository = "https://github.com/tsubakisakura/mjlog2json/mjlog"
 license = "Apache-2.0 OR MIT"
 
 [dependencies]

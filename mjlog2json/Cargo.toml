@@ -3,6 +3,7 @@ name = "mjlog2json"
 version = "0.1.0"
 edition = "2021"
 description = "Convert mjlog-XML to tenhou-JSON"
+repository = "https://github.com/tsubakisakura/mjlog2json/mjlog2json"
 license = "Apache-2.0 OR MIT"
 
 [dependencies]
