@@ -8,5 +8,5 @@ license = "Apache-2.0 OR MIT"
 
 [dependencies]
 mjlog = { version = "0.1.0", path = "../mjlog" }
-tenhou-json = { path = "../tenhou-json" }
+tenhou-json = { version = "0.1.0", path = "../tenhou-json" }
 thiserror = "2.0.12"
