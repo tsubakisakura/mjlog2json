@@ -7,6 +7,6 @@ repository = "https://github.com/tsubakisakura/mjlog2json/mjlog2json-core/"
 license = "Apache-2.0 OR MIT"
 
 [dependencies]
-mjlog = { path = "../mjlog" }
+mjlog = { version = "0.1.0", path = "../mjlog" }
 tenhou-json = { path = "../tenhou-json" }
 thiserror = "2.0.12"

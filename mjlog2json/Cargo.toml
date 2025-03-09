@@ -7,9 +7,9 @@ repository = "https://github.com/tsubakisakura/mjlog2json/mjlog2json"
 license = "Apache-2.0 OR MIT"
 
 [dependencies]
-mjlog = { path = "../mjlog" }
-tenhou-json = { path = "../tenhou-json" }
-mjlog2json-core = { path = "../mjlog2json-core" }
+mjlog = { version = "0.1.0", path = "../mjlog" }
+tenhou-json = { version = "0.1.0", path = "../tenhou-json" }
+mjlog2json-core = { version = "0.1.0", path = "../mjlog2json-core" }
 glob = "0.3.2"
 thiserror = "2.0.12"
 async-std = { version = "1.13.0", features = ["attributes"] }
