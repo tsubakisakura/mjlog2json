@@ -24,7 +24,7 @@
 
 mkdir -p downloads
 
-for gz_file in *.html.gz; do
+for gz_file in scc*.html.gz; do
   echo "Processing: ${gz_file}"
 
   # .*log=    -> ignore  for until log=
