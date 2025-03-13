@@ -152,12 +152,15 @@ fn conv_rule(settings: &GameSettings) -> ConvResult<Rule> {
     };
 
     let hanchan_str = if settings.hanchan { "南" } else { "東" };
+    let aka_str = if settings.no_red { "" } else { "赤" };
+    let kuitan_str = if settings.no_kuitan { "" } else { "喰" };
+    let soku_str = if settings.soku { "速" } else { "" };
 
     Ok(Rule {
-        disp: format!("{}{}喰赤", room_str, hanchan_str),
-        aka53: true,
-        aka52: true,
-        aka51: true,
+        disp: format!("{}{}{}{}{}", room_str, hanchan_str, kuitan_str, aka_str, soku_str),
+        aka53: !settings.no_red,
+        aka52: !settings.no_red,
+        aka51: !settings.no_red,
     })
 }
 
