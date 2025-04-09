@@ -8,6 +8,7 @@
 
 use num_derive::FromPrimitive;
 use num_traits::FromPrimitive;
+use serde_derive::{Serialize, Deserialize};
 use thiserror::Error;
 
 /// Occurs when there is no corresponding identifier.
@@ -32,11 +33,11 @@ pub enum ParseError {
 /// 1111..0555..9999m 1111..0555..9999p 1111..0555..9999s 1111..7777z
 /// (0m == red 5m)
 /// ```
-#[derive(Debug, Default, PartialEq, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
 pub struct Hai(u8);
 
 /// Player index.
-#[derive(Debug, Default, PartialEq, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
 pub struct Player(u8);
 
 /// GamePoint represents each player's score, which usually starts at 25,000 or 30,000.
@@ -44,7 +45,7 @@ pub type GamePoint = i32;
 
 /// Represents the relative direction of a player based on the current player’s perspective.
 #[repr(u8)]
-#[derive(Debug, Default, PartialEq, Clone, Copy, FromPrimitive)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize, FromPrimitive)]
 pub enum Direction {
     /// 自分(Self)
     #[default]
@@ -59,7 +60,7 @@ pub enum Direction {
 
 /// Represents the room type in Tenhou.
 #[repr(u8)]
-#[derive(Debug, Default, PartialEq, Clone, Copy, FromPrimitive)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize, FromPrimitive)]
 pub enum TenhouRoom {
     /// 一般卓
     #[default]
@@ -74,7 +75,7 @@ pub enum TenhouRoom {
 
 /// Represents the rank type in Tenhou.
 #[repr(u8)]
-#[derive(Debug, Default, PartialEq, Clone, Copy, FromPrimitive)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize, FromPrimitive)]
 pub enum TenhouRank {
     #[default]
     Newcomer,
@@ -101,7 +102,7 @@ pub enum TenhouRank {
 }
 
 /// Game settings.
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct GameSettings {
     pub vs_human: bool,
     pub no_red: bool,
@@ -113,7 +114,7 @@ pub struct GameSettings {
 }
 
 /// Represents the initial settings for each round.
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct InitSeed {
     pub kyoku: u8,
     pub honba: u8,
@@ -123,7 +124,7 @@ pub struct InitSeed {
 }
 
 /// Represents the details of a call (meld).
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Meld {
     Chii {
         combination: (Hai, Hai, Hai),
@@ -153,7 +154,7 @@ pub enum Meld {
 }
 
 /// Represents special draw conditions.
-#[derive(Debug, Default, PartialEq, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
 pub enum ExtraRyuukyokuReason {
     /// 九種九牌
     #[default]
@@ -172,7 +173,7 @@ pub enum ExtraRyuukyokuReason {
 
 /// Represents the winning hand rank, such as Mangan.
 #[repr(u8)]
-#[derive(Debug, Default, PartialEq, Clone, Copy, FromPrimitive)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize, FromPrimitive)]
 pub enum ScoreRank {
     #[default]
     Normal,
@@ -190,7 +191,7 @@ pub enum ScoreRank {
 
 /// Represents the name of a Yaku (winning hand combination).
 #[repr(u8)]
-#[derive(Debug, Default, PartialEq, Clone, Copy, FromPrimitive)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize, FromPrimitive)]
 pub enum Yaku {
     #[default]
     MenzenTsumo,
@@ -251,7 +252,7 @@ pub enum Yaku {
 }
 
 /// Corresponds to the AGARI tag.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionAGARI {
     /// Bonus points for consecutive draws or dealer wins.
     pub honba: u8,
@@ -323,7 +324,7 @@ pub struct ActionAGARI {
 }
 
 /// Corresponds to the RYUUKYOKU tag.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionRYUUKYOKU {
     /// Bonus points for consecutive draws or dealer wins.
     pub honba: u8,
@@ -361,13 +362,13 @@ pub struct ActionRYUUKYOKU {
 }
 
 /// Corresponds to the SHUFFLE tag.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionSHUFFLE {
     pub seed: String,
 }
 
 /// Corresponds to the GO tag.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionGO {
     /// In the original XML, this is named "type", but it has been chaned to avoid conflicts with Rust reserved keywords.
     pub settings: GameSettings,
@@ -378,7 +379,7 @@ pub struct ActionGO {
 ///
 /// In the original XML, the initial state and reconnection share the UN tag.
 /// However, since user utilize them differently, they are intentionally separated into two.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionUN1 {
     pub names: Vec<String>,
     pub dan: Vec<TenhouRank>,
@@ -389,26 +390,26 @@ pub struct ActionUN1 {
 /// Corresponds to the UN tag in the case of reconnection.
 ///
 /// In the original XML, it is expressed as options from n0 to n3, but since that is confusing, it has been reorganized.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionUN2 {
     pub who: Player,
     pub name: String,
 }
 
 /// Corresponds to the BYE tag.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionBYE {
     pub who: Player,
 }
 
 /// Corresponds to the TAIKYOKU tag.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionTAIKYOKU {
     pub oya: Player,
 }
 
 /// Corresponds to the INIT tag.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionINIT {
     pub seed: InitSeed,
     pub ten: Vec<GamePoint>,
@@ -422,27 +423,27 @@ pub struct ActionINIT {
 /// we split the enum into two since they are usually handled separately.
 /// At step 1, a riichi declaration is made.
 /// Afterwards, a tile is discarded, and if no ron occurs, step is set to 2.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionREACH1 {
     pub who: Player,
 }
 
 /// Corresponds to the REACH tag after a tile is discarded (step 2).
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionREACH2 {
     pub who: Player,
     pub ten: Vec<GamePoint>,
 }
 
 /// Corresponds to the N tag, represents a call (meld).
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionN {
     pub who: Player,
     pub m: Meld,
 }
 
 /// Corresponds to the DORA tag, represents a new Dora indicator.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionDORA {
     pub hai: Hai,
 }
@@ -451,7 +452,7 @@ pub struct ActionDORA {
 ///
 /// Tsumo actions are represented by the T, U, V, and W tags,
 /// but since they share common properties, they are unified into a single structure.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionDRAW {
     pub who: Player,
     pub hai: Hai,
@@ -461,14 +462,14 @@ pub struct ActionDRAW {
 ///
 /// Discard actions are represented by the D, E, F, and G tags,
 /// but since they share common properties, they are unified into a single structure.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ActionDISCARD {
     pub who: Player,
     pub hai: Hai,
 }
 
 /// Corresponds to each tag within ```mgloggm```.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum Action {
     SHUFFLE(ActionSHUFFLE),
     GO(ActionGO),
@@ -488,7 +489,7 @@ pub enum Action {
 }
 
 /// Corresponds to the entire mjloggm tag.
-#[derive(Debug, Default)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct Mjlog {
     pub ver: f64,
     pub actions: Vec<Action>,
@@ -734,5 +735,11 @@ impl std::str::FromStr for ExtraRyuukyokuReason {
             "nm" => ExtraRyuukyokuReason::NagashiMangan,
             _ => return Err(ParseError::InvalidExtraRyuukyokuReason),
         })
+    }
+}
+
+impl Default for Meld {
+    fn default() -> Self {
+        Meld::Ankan { hai: Hai::default() }
     }
 }

@@ -467,6 +467,8 @@ dependencies = [
  "num-traits",
  "percent-encoding",
  "quick-xml",
+ "serde",
+ "serde_derive",
  "thiserror",
 ]
 
